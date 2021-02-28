@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/UserInterface/ChangeSceneButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/RetryButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=5]
+
+[node name="UserInterface" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -159.0
+margin_top = 28.0
+margin_right = -38.0
+margin_bottom = 59.0
+text = "Score: %s"
+align = 2
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.254902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.5
+margin_top = -182.0
+margin_right = 47.5
+margin_bottom = -151.0
+text = "Paused"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -111.0
+margin_right = 112.0
+margin_bottom = 111.0
+
+[node name="RetryButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 4 )]
+margin_right = 224.0
+margin_bottom = 71.0
+
+[node name="MainScreenButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 2 )]
+margin_top = 75.0
+margin_right = 224.0
+margin_bottom = 146.0
+text = "Main Screen"
+next_scene_path = "res://src/Screens/MainScreen.tscn"
+
+[node name="QuitButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 3 )]
+margin_top = 150.0
+margin_right = 224.0
+margin_bottom = 222.0

@@ -7,8 +7,7 @@ func _on_EnemyDetector_area_entered(area):
 	
 	
 func _on_EnemyDetector_body_entered(body):
-	queue_free()
-	get_tree().reload_current_scene()
+	die()
 
 
 func _physics_process(delta):
@@ -46,3 +45,7 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse: float) -> Vecto
 	
 	return out
 
+func die():
+	PlayerData.deaths += 1
+	queue_free()
+	get_tree().reload_current_scene()
