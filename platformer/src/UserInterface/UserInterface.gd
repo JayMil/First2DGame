@@ -18,7 +18,7 @@ func _on_PlayerData_player_died():
 	
 
 func _unhandled_input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and pause_title.text != "You died":
 		self.paused = not paused
 		scene_tree.set_input_as_handled()
 
