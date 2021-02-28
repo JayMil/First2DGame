@@ -8,6 +8,7 @@ func _on_EnemyDetector_area_entered(area):
 	
 func _on_EnemyDetector_body_entered(body):
 	queue_free()
+	get_tree().reload_current_scene()
 
 
 func _physics_process(delta):
