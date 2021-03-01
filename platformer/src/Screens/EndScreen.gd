@@ -9,7 +9,11 @@ onready var label: Label = get_node("Label")
 var index: = 0 setget set_index
 
 func _ready():
-	label.text = label.text % [PlayerData.score, PlayerData.deaths]
+	var score = 0
+	for s in PlayerData.levels:
+		score += s
+		
+	label.text = label.text % [score, PlayerData.deaths]
 	
 func _process(delta):
 	var btn: Button = buttons[index]
