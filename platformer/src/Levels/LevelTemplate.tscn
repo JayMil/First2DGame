@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal2D.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=8]
-[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=9]
+[ext_resource path="res://src/Levels/LevelTemplate.gd" type="Script" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -37,6 +36,7 @@ points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
 0/z_index = 0
 
 [node name="LevelTemplate" type="Node2D"]
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_vertical_guides_": [ 2561.0 ]
 }
@@ -44,15 +44,7 @@ __meta__ = {
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="UserInterface" type="Control" parent="UserInterface" instance=ExtResource( 7 )]
-pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 9 )
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="UserInterface" parent="UserInterface" instance=ExtResource( 7 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -75,22 +67,19 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 10, 0, 0, 11, 0, 0, 65536, 0, 0, 65546, 0, 0, 65547, 0, 0, 131072, 0, 0, 131082, 0, 0, 131083, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196618, 0, 0, 196619, 0, 0, 262144, 0, 0, 262154, 0, 0, 262155, 0, 0, 327680, 0, 0, 327690, 0, 0, 327691, 0, 0, 393216, 0, 0, 393226, 0, 0, 393227, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 273, 548 )
-scale = Vector2( 0.25, 0.25 )
+[node name="Elements" type="Node2D" parent="."]
 
-[node name="Camera2D" parent="Player" index="2"]
-limit_right = 2561
-
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 127, 229 )
-scale = Vector2( 0.25, 0.25 )
-
-[node name="Coin" parent="." instance=ExtResource( 5 )]
-position = Vector2( 387, 393 )
-
-[node name="Portal2D" parent="." instance=ExtResource( 6 )]
+[node name="Portal2D" parent="Elements" instance=ExtResource( 6 )]
 position = Vector2( 748, 496 )
 scale = Vector2( 0.5, 0.5 )
 
-[editable path="Player"]
+[node name="Player" parent="Elements" instance=ExtResource( 2 )]
+position = Vector2( 273, 548 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Coin" parent="Elements" instance=ExtResource( 5 )]
+position = Vector2( 387, 393 )
+
+[node name="Enemy" parent="Elements" instance=ExtResource( 3 )]
+position = Vector2( 127, 229 )
+scale = Vector2( 0.25, 0.25 )

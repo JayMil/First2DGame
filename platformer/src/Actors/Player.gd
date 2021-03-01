@@ -2,9 +2,10 @@ extends Actor
 
 export var stomp_impulse: = 1500.0
 
+onready var anim_player: AnimationPlayer = get_node("AnimationPlayer")
+	
 func _on_EnemyDetector_area_entered(area):
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
-	
 	
 func _on_EnemyDetector_body_entered(body):
 	die()
@@ -46,4 +47,7 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse: float) -> Vecto
 func die():
 	PlayerData.deaths += 1
 	queue_free()
-	#get_tree().reload_current_scene()
+	
+func on_teleport(body: Node2D, caller: Area2D, callback: String):
+	anim_player.play("Teleport")
+	caller.call_deferred(callback)
