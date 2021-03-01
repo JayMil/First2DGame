@@ -4,13 +4,9 @@ onready var scene_tree: = get_tree()
 onready var playButton: Button = get_node("Menu/PlayButton")
 onready var quitButton: Button = get_node("Menu/QuitButton")
 onready var buttons: = [playButton, quitButton]
-onready var label: Label = get_node("Label")
 
 var index: = 0 setget set_index
 
-func _ready():
-	label.text = label.text % [PlayerData.score, PlayerData.deaths]
-	
 func _process(delta):
 	var btn: Button = buttons[index]
 	btn.grab_focus()
