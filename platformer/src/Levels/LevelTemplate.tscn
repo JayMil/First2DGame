@@ -78,7 +78,19 @@ position = Vector2( 273, 548 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Coin" parent="Elements" instance=ExtResource( 5 )]
-position = Vector2( 387, 393 )
+position = Vector2( 360, 400 )
+
+[node name="Coin2" parent="Elements" instance=ExtResource( 5 )]
+position = Vector2( 280, 400 )
+
+[node name="Coin3" parent="Elements" instance=ExtResource( 5 )]
+position = Vector2( 200, 400 )
+
+[node name="Coin4" parent="Elements" instance=ExtResource( 5 )]
+position = Vector2( 440, 400 )
+
+[node name="Coin5" parent="Elements" instance=ExtResource( 5 )]
+position = Vector2( 520, 400 )
 
 [node name="Enemy" parent="Elements" instance=ExtResource( 3 )]
 position = Vector2( 127, 229 )

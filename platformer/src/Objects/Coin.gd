@@ -9,4 +9,4 @@ func _on_body_entered(body):
 
 func picked():
 	PlayerData.score += score
-	anim_player.play("fade_out")
+	anim_player.play("picked")
