@@ -10,3 +10,4 @@ func _on_body_entered(body):
 func picked():
 	PlayerData.score += score
 	anim_player.play("picked")
+	
