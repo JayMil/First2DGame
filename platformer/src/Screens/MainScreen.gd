@@ -1,35 +1,24 @@
 extends Control
 
 onready var scene_tree: = get_tree()
+onready var nameText: = get_node("nameText")
 onready var playButton: Button = get_node("Menu/PlayButton")
 onready var quitButton: Button = get_node("Menu/QuitButton")
 onready var buttons: = [playButton, quitButton]
 
-var index: = 0 setget set_index
 
-func _process(delta):
-	var btn: Button = buttons[index]
-	btn.grab_focus()
-
-func _unhandled_input(event):
-	if event.is_action_released("Down"):
-		self.index += 1
-		scene_tree.set_input_as_handled()
-	elif event.is_action_released("Up"):
-		self.index -= 1
-		scene_tree.set_input_as_handled()
-	elif event.is_action_released("Enter"):
-		handler_enter()
-		scene_tree.set_input_as_handled()
-
-func handler_enter():
-	var btn: Button = buttons[index]
-	btn.emit_signal("button_up")
-
-func set_index(value: int):
-	if value < 0:
-		index = len(buttons) - 1
-	elif value > len(buttons) - 1:
-		index = 0	
+func _ready():
+	nameText.text = PlayerData.player_name
+	nameText.grab_focus()
+	PlayerData.reset()
+	
+func _process(delta):	
+	if PlayerData.player_name == "":
+		playButton.disabled = true
 	else:
-		index = value
+		playButton.disabled = false
+		
+		
+
+func _on_nameText_text_changed(new_text):
+	PlayerData.player_name = new_text

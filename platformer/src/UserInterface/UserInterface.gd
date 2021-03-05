@@ -2,7 +2,9 @@ extends Control
 
 onready var scene_tree: = get_tree()
 onready var pause_overlay: ColorRect = get_node("PauseOverlay")
-onready var score: Label = get_node("Label")
+onready var scoreLabel: Label = get_node("ScoreLabel")
+onready var deathsLabel: Label = get_node("DeathsLabel")
+onready var nameLabel: Label = get_node("NameLabel")
 onready var pause_title: Label = get_node("PauseOverlay/Title")
 onready var retryButton: Button = get_node("PauseOverlay/PauseMenu/RetryButton")
 onready var mainScreenButton: Button = get_node("PauseOverlay/PauseMenu/MainScreenButton")
@@ -20,6 +22,7 @@ func _process(delta):
 func _ready():
 	PlayerData.connect("score_updated", self, "update_interface")
 	PlayerData.connect("player_died", self, "_on_PlayerData_player_died")
+	nameLabel.text = PlayerData.player_name
 	update_interface()
 	
 func _on_PlayerData_player_died():
@@ -42,7 +45,8 @@ func _unhandled_input(event):
 			scene_tree.set_input_as_handled()
 
 func update_interface():
-	score.text = "Score: %s" % PlayerData.score
+	scoreLabel.text = "Score: %s" % PlayerData.score
+	deathsLabel.text = "Deaths: %s" % PlayerData.deaths
 
 func handler_enter():
 	var btn: Button = buttons[index]

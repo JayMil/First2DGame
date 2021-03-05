@@ -38,9 +38,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -123.0
-margin_top = -48.0
+margin_top = 4.0
 margin_right = 123.0
-margin_bottom = 48.0
+margin_bottom = 100.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,3 +57,30 @@ margin_right = 246.0
 margin_bottom = 96.0
 
 [node name="MenuBackgroundSound" parent="." instance=ExtResource( 7 )]
+
+[node name="nameText" type="LineEdit" parent="."]
+margin_left = 464.0
+margin_top = 200.0
+margin_right = 656.0
+margin_bottom = 241.0
+max_length = 5
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -92.0
+margin_right = -59.0
+margin_bottom = -61.0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="nameText" to="." method="_on_nameText_text_changed"]
+[connection signal="text_entered" from="nameText" to="." method="_on_LineEdit_text_entered"]

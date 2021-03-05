@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/UserInterface/ChangeSceneButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Screens/HighScoreScreen.gd" type="Script" id=2]
+[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/PlayButton.gd" type="Script" id=5]
+[ext_resource path="res://assets/background.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=8]
+
+[node name="HighScoreScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" parent="." instance=ExtResource( 4 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -496.0
+margin_top = -300.0
+margin_right = 492.0
+margin_bottom = -243.0
+text = "High Scores"
+
+[node name="NewHighScoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -448.0
+margin_top = 88.0
+margin_right = 448.0
+margin_bottom = 119.0
+text = "New High Score of 55000 for WWWWW"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScores" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -172.0
+margin_top = -142.0
+margin_right = 172.0
+margin_bottom = 142.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rank" type="Label" parent="HighScores"]
+margin_right = 112.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "Rank"
+
+[node name="Name" type="Label" parent="HighScores"]
+margin_left = 116.0
+margin_right = 228.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="Score" type="Label" parent="HighScores"]
+margin_left = 232.0
+margin_right = 344.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+text = "Score"
+align = 2
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = 140.0
+margin_right = 136.0
+margin_bottom = 283.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="Menu" instance=ExtResource( 1 )]
+margin_bottom = 45.0
+text = "Play Again"
+next_scene_path = "res://src/Levels/Level01.tscn"
+
+[node name="QuitButton" parent="Menu" instance=ExtResource( 3 )]
+margin_top = 49.0
+margin_right = 256.0
+margin_bottom = 94.0
+
+[node name="MainMenuButton" type="Button" parent="Menu"]
+margin_top = 98.0
+margin_right = 256.0
+margin_bottom = 143.0
+size_flags_vertical = 3
+text = "Main Menu"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene_path = "res://src/Screens/MainScreen.tscn"
+[connection signal="button_up" from="Menu/MainMenuButton" to="Menu/MainMenuButton" method="_on_button_up"]

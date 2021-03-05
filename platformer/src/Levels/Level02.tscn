@@ -9,7 +9,7 @@
 [ext_resource path="res://src/Levels/Level02.gd" type="Script" id=7]
 [ext_resource path="res://src/UserInterface/BackgroundSound.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Portal2D.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/Screens/EndScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Screens/HighScoreScreen.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 80, 0, 80, 80, 0, 80 )
@@ -72,7 +72,7 @@ tile_data = PoolIntArray( -262093, 0, 0, -262092, 0, 0, -262091, 0, 0, -262090, 
 [node name="Portal2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 5560, 200 )
 scale = Vector2( 0.5, 0.5 )
-next_scene = ExtResource( 11 )
+next_scene = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, 160 )
